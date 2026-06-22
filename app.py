@@ -4,8 +4,6 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-class_names = ['healthy', 'sick']
-
 model = load_model('chicken_disease_model.h5')
 
 st.title('Chicken Disease Detection')
@@ -23,6 +21,5 @@ if uploaded_file:
         img_array = np.expand_dims(img_array, axis=0)
 
         prediction = model.predict(img_array)
-        predicted_class = class_names[np.argmax(prediction)]
 
-        st.subheader(f'Prediction: {predicted_class}')
+        st.subheader(f'Prediction: {prediction}')
